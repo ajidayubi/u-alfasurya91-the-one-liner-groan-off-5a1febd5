@@ -7,9 +7,14 @@ import { mkdirSync, writeFileSync } from "node:fs";
 const JOKE =
   "I told my kids the fridge light stays on because it's afraid of the dark — now they leave the door open to comfort it.";
 
-if (JOKE.length < 1 || JOKE.length > 140 || JOKE.trim().length === 0) {
+if (
+  JOKE.length < 1 ||
+  JOKE.length > 140 ||
+  JOKE.trim().length === 0 ||
+  JOKE.includes("\n")
+) {
   throw new Error(
-    `dad joke must be 1-140 non-blank characters, got ${JOKE.length}`,
+    `dad joke must be one line of 1-140 non-blank characters, got ${JOKE.length}`,
   );
 }
 
